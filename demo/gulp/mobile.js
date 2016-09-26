@@ -53,6 +53,15 @@ gulp.task('dist-mobile-windows', (done) => {
     distributeMobileApp('windows', done);
 });
 
+gulp.task('build-splash-and-icon', (done) => {
+    var currentDir = sh.pwd();
+    sh.cd(config.targets.build.mobile);
+    sh.exec('../../node_modules/.bin/cordova-splash');
+    sh.exec('../../node_modules/.bin/cordova-icon');
+    sh.cd(currentDir);
+    done();
+});
+
 gulp.task('mobile:build:all', (done) => {
     run(
     'build-web',
@@ -62,6 +71,7 @@ gulp.task('mobile:build:all', (done) => {
     'mobile:build:remove-fake-script',
     'mobile:build:resources',
     'mobile:build:copy:hooks',
+        'build-splash-and-icon',
     ['mobile:build:ios', 'mobile:build:android', 'mobile:build:windows'],
     done);
 });
@@ -144,8 +154,6 @@ function prepareAndBuildNativeProject(platform, done) {
     var currentDir = sh.pwd();
     sh.cd(config.targets.build.mobile);
     sh.exec('cordova prepare ' + platform);
-    sh.exec('../../node_modules/.bin/cordova-splash');
-    sh.exec('../../node_modules/.bin/cordova-icon');
     sh.exec('cordova build ' + platform);
     sh.cd(currentDir);
     done();
@@ -153,6 +161,7 @@ function prepareAndBuildNativeProject(platform, done) {
 
 function runMobileApp(platform, done) {
     var currentDir = sh.pwd();
+    console.log(config.targets.build.mobile);
     sh.cd(config.targets.build.mobile);
     sh.exec('cordova run ' + platform);
     sh.cd(currentDir);
