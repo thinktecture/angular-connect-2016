@@ -23,7 +23,8 @@ declare let window;
 
 let evaluateCameraService = ()=> {
     return (platformInformationService: PlatformInformationService): CameraService => {
-        return platformInformationService.isMobile ? new MobileCameraService() : new DesktopCameraService();
+        // angularConnect demo
+        return new DesktopCameraService();
     };
 };
 
