@@ -1,3 +1,4 @@
+```
 <preference name="StatusBarOverlaysWebView" value="false"/>
 <preference name="StatusBarBackgroundColor" value="#367fa9"/>
 <preference name="StatusBarStyle" value="lightcontent"/>
@@ -10,3 +11,4 @@
 <preference name="android-targetSdkVersion" value="19" />
 <preference name="xwalkCommandLine" value="--disable-pull-to-refresh-effect"/>
 <preference name="xwalkMode" value="embedded"/>
+```

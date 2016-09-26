@@ -32,6 +32,7 @@ app.on('ready', () => {
 
     buildTrayIcon();
 
+    //ngconnect demo // opendevtools
     globalShortcut.register('CmdOrCtrl+Shift+d', function () {
         mainWindow.webContents.toggleDevTools();
     });
@@ -39,7 +40,9 @@ app.on('ready', () => {
     if (isBrowserSync) {
         mainWindow.loadURL('http://localhost:8000/index.html');
     } else {
+        //ngconnect demo // -> link to build/web for initial demo
         mainWindow.loadURL('file://' + __dirname + '/index.html');
+        //ngconnect demo // -> change back
     }
 
     mainWindow.setTitle(app.getName());
@@ -47,7 +50,6 @@ app.on('ready', () => {
     mainWindow.on('closed', () => {
         mainWindow = null;
     });
-
 
     if (process.platform == 'darwin') {
         buildNativeAppMenu();
@@ -117,6 +119,7 @@ let buildNativeAppMenu = () => {
     Menu.setApplicationMenu(Menu.buildFromTemplate(template));
 };
 let buildTrayIcon = () => {
+    //ngconnect demo // buildtray
     let trayIconPath = path.join(__dirname, 'icon.png');
     var contextMenu = Menu.buildFromTemplate([
         {
