@@ -20,7 +20,7 @@ export class DesktopCameraService implements ICameraService {
     }
 
     public getPhoto(): Observable<string> {
-        return Observable.fromPromise(
+        return <Observable<string>>Observable.fromPromise(
             this.getMediaDevices().getUserMedia({ video: true, audio: false })
                 .then((stream: any) => {
                         return new Promise((resolve, reject) => {
