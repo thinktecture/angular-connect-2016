@@ -33,9 +33,6 @@ app.on('ready', () => {
     buildTrayIcon();
 
     //ngconnect demo // opendevtools
-    globalShortcut.register('CmdOrCtrl+Shift+d', function () {
-        mainWindow.webContents.toggleDevTools();
-    });
 
     if (isBrowserSync) {
         mainWindow.loadURL('http://localhost:8000/index.html');
