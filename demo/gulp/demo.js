@@ -4,7 +4,7 @@ const gulp = require('gulp'),
 gulp.task('start-demo', (done) => {
     run(
         'build-web',
-        'mobile:build:copy-dev-config',
+        'build-mobile-ios',
         [
             'start-desktop', 'start-mobile-ios', 'watch-web'
         ]

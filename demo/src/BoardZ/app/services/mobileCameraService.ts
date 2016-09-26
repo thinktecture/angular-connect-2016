@@ -4,6 +4,7 @@ import {ICameraService} from './cameraService';
 declare let window;
 
 export class MobileCameraService implements ICameraService {
+
     public getPhoto(): Observable<string> {
         return Observable.create((observer: Observer<string>) => {
             let removeDomListener = () => {

@@ -1,7 +1,6 @@
 import {ROUTER_PROVIDERS} from '@angular/router-deprecated';
 import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 import {XHRBackend, ConnectionBackend} from '@angular/http';
-
 import {AppConfiguration} from '../appConfig';
 import {NativeIntegrationService} from '../services/nativeIntegrationService';
 import {AuthenticatedHttp} from '../services/authenticatedHttp';
@@ -16,8 +15,8 @@ import {PlatformInformationService} from '../services/platformInformationService
 import {CameraService} from '../services/cameraService';
 import {UiNotificationService} from '../services/uiNotificationService';
 import {SignalRService} from '../services/signalrService';
-import {MobileCameraService} from '../services/mobileCameraService';
 import {DesktopCameraService} from '../services/desktopCameraService';
+import {MobileCameraService} from '../services/mobileCameraService';
 
 declare let window;
 

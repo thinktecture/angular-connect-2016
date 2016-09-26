@@ -29,10 +29,6 @@ gulp.task('start-mobile-ios', (done) => {
     runMobileApp('ios', done);
 });
 
-gulp.task('start-mobile-ios', (done) => {
-    runMobileApp('ios', done);
-});
-
 gulp.task('start-mobile-android', (done) => {
     runMobileApp('android', done);
 });
@@ -95,11 +91,12 @@ function buildMobileApp(platform, done) {
 function distributeMobileApp(platform, done) {
     run(
         'mobile:clean',
-        'mobile:build:copy-sources',
-        'mobile:build:remove-fake-script',
         'mobile:build:copy-dist-config',
+        'mobile:build:copy-sources-'+ platform,
+        'mobile:build:remove-fake-script',
         'mobile:build:resources',
         'mobile:build:copy:hooks',
+        'build-splash-and-icon',
         'mobile:build:' + platform,
         done
     )
@@ -109,16 +106,31 @@ gulp.task('mobile:clean', () => del(path.join(config.targets.build.mobile, '**/*
 
 gulp.task('mobile:build:copy-sources', () => {
     let files = gulp.src(path.join(config.targets.build.web, '**', '*.*'), { base: config.targets.build.web });
-    return copySources(files);
+    return copySources(files, '');
 });
 
-function copySources(files) {
+gulp.task('mobile:build:copy-sources-ios', () => {
+    let files = gulp.src(path.join(config.targets.build.web, '**', '*.*'), { base: config.targets.build.web });
+    return copySources(files, 'ios');
+});
+
+gulp.task('mobile:build:copy-sources-android', () => {
+    let files = gulp.src(path.join(config.targets.build.web, '**', '*.*'), { base: config.targets.build.web });
+    return copySources(files, 'android');
+});
+
+gulp.task('mobile:build:copy-sources-windows', () => {
+    let files = gulp.src(path.join(config.targets.build.web, '**', '*.*'), { base: config.targets.build.web });
+    return copySources(files, 'windows');
+});
+
+function copySources(files, platform) {
     var currentDir = sh.pwd();
     return files
         .pipe(gulp.dest(path.join(config.targets.build.mobileWeb)))
         .on('end', () => {
             sh.cd(path.join(__dirname, '..', config.targets.build.mobile));
-            sh.exec('cordova prepare');
+            sh.exec('cordova prepare ' + platform);
             sh.cd(currentDir);
             browserSync.reload();
         })

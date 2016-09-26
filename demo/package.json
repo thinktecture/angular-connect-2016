@@ -15,6 +15,7 @@
     "build-desktop-all": "gulp build-desktop-all",
     "build-desktop-osx": "gulp build-desktop-osx",
     "build-mobile-ios": "gulp build-mobile-ios",
+    "dist-mobile-ios": "gulp build-web && gulp dist-mobile-ios",
     "start-desktop": "gulp start-desktop",
     "start-mobile-ios": "gulp start-mobile-ios",
     "start-mobile-android": "gulp start-mobile-android",
