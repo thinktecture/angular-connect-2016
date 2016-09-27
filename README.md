@@ -1,6 +1,6 @@
 # AngularConnect 2016 - Sample Application
 
-## TL;DR;
+## Notes
 *The sample application uses a Microsoft Azure hosted API [https://boardzapi.azurewebsites.net/swagger](https://boardzapi.azurewebsites.net/swagger).*
 
 **For login, please use same value for username and password ;-)**
