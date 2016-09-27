@@ -18,12 +18,12 @@ import {SignalRService} from '../services/signalrService';
 import {DesktopCameraService} from '../services/desktopCameraService';
 import {MobileCameraService} from '../services/mobileCameraService';
 
+
 declare let window;
 
 let evaluateCameraService = ()=> {
     return (platformInformationService: PlatformInformationService): CameraService => {
-        // angularConnect demo
-        return new DesktopCameraService();
+        return platformInformationService.isMobile? new MobileCameraService(): new DesktopCameraService();
     };
 };
 

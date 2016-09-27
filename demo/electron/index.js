@@ -29,18 +29,16 @@ app.on('ready', () => {
             nodeIntegration: true
         }
     });
-
-    //ngconnect demo // opendevtools
-
+    globalShortcut.register('CmdOrCtrl+Shift+d', function () {
+        mainWindow.webContents.toggleDevTools();
+    });
 
     buildTrayIcon();
 
     if (isBrowserSync) {
         mainWindow.loadURL('http://localhost:8000/index.html');
     } else {
-        //ngconnect demo // -> link to build/web for initial demo
         mainWindow.loadURL('file://' + __dirname + '/index.html');
-        //ngconnect demo // -> change back
     }
 
     mainWindow.setTitle(app.getName());
@@ -55,8 +53,25 @@ app.on('ready', () => {
 });
 
 let buildTrayIcon = () => {
-    //ngconnect demo // buildtray
+    let trayIconPath = path.join(__dirname, 'icon.png');
+    var contextMenu = Menu.buildFromTemplate([
+        {
+            label: 'Radius Search...',
+            type: 'normal',
+            click: function () {
+                mainWindow.webContents.send('navigateTo', 'RadiusSearch');
+            }
+        },
+        {
+            label: 'Quit',
+            accelerator: 'Command+Q',
+            selector: 'terminate:'
+        }
+    ]);
 
+    trayApp = new electron.Tray(trayIconPath);
+    trayApp.setToolTip('BoardZ2');
+    trayApp.setContextMenu(contextMenu);
 };
 
 let buildNativeAppMenu = () => {

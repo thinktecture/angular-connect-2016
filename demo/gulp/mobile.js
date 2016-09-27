@@ -37,6 +37,10 @@ gulp.task('start-mobile-windows', (done) => {
     runMobileApp('windows', done);
 });
 
+gulp.task('dist-mobile-all', (done) => {
+    run('dist-mobile-ios', 'dist-mobile-android', done);
+});
+
 gulp.task('dist-mobile-ios', (done) => {
     distributeMobileApp('ios', done)
 });
