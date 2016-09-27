@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<widget id="net.tt.boardz.v2" version="0.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>BoardZ2</name>
+    <description>
+        Small demo app.
+    </description>
+    <author email="office@thinktecture.com" href="http://www.thinktecture.com">
+        Thinktecture AG
+    </author>
+
+    <content src="http://${hostname}:8000/index.html"/>
+
+    <plugin name="cordova-plugin-whitelist" version="1.2.2"/>
+    <plugin name="cordova-plugin-statusbar" spec="2.1.3"/>
+    <plugin name="cordova-plugin-splashscreen" spec="3.2.2"/>
+    <plugin name="cordova-plugin-geolocation" spec="2.2.0"/>
+    <plugin name="cordova-plugin-camera" spec="2.2.0"/>
+
+    <platform name="ios">
+    </platform>
+
+    <platform name="android">
+        <hook type="after_platform_add" src="hooks/android/after_platform_add_add_plugins.js" />
+    </platform>
+
+    <access origin="*"/>
+
+    <allow-intent href="http://*/*"/>
+    <allow-intent href="https://*/*"/>
+    <allow-intent href="tel:*"/>
+    <allow-intent href="sms:*"/>
+    <allow-intent href="mailto:*"/>
+    <allow-intent href="geo:*"/>
+    <allow-navigation href="http://${hostname}:8000/*" />
+
+    <platform name="android">
+        <allow-intent href="market:*"/>
+    </platform>
+    <platform name="ios">
+        <allow-intent href="itms:*"/>
+        <allow-intent href="itms-apps:*"/>
+    </platform>
+
+    <preference name="StatusBarOverlaysWebView" value="false"/>
+    <preference name="StatusBarBackgroundColor" value="#367fa9"/>
+    <preference name="StatusBarStyle" value="lightcontent"/>
+    <preference name="DisallowOverscroll" value="true"/>
+    <preference name="SplashScreen" value="screen"/>
+    <preference name="SplashScreenDelay" value="3000"/>
+    <preference name="SplashMaintainAspectRatio" value="true" />
+    <preference name="SplashScreenBackgroundColor" value="white" />
+    <preference name="android-minSdkVersion" value="19" />
+    <preference name="android-targetSdkVersion" value="19" />
+    <preference name="xwalkCommandLine" value="--disable-pull-to-refresh-effect"/>
+    <preference name="xwalkMode" value="embedded"/>
+    <platform name="ios">
+        <preference name="Orientation" value="all" />
+    </platform>
+
+    <engine name="ios" spec="4.2.0"/>
+    <engine name="android" spec="5.1.1"/>
+    <engine name="windows" spec="4.4.0"/>
+</widget>
