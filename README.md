@@ -51,7 +51,7 @@ Use `npm run start-web` as mentioned above to start the browser version of Board
 To run the cordova project, open a terminal and point it to `dist/mobile`. Use one of the following commands to start:
 
 * `npm run start-mobile-ios`: Runs the iOS version of BoardZ. Requires a Mac
-* `npm run start-mobile-ios`: Runs the Android version of BoardZ. Requires Android SDK to be installed and at least a simulator
+* `npm run start-mobile-android`: Runs the Android version of BoardZ. Requires Android SDK to be installed and at least a simulator
 
 ### Electron
 
